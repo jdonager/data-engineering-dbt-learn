@@ -11,7 +11,8 @@ sources:
                             
         external:
           location: gs://vernal-foundry-375904-ny-taxi-data/green/*
-          
+          options:
+            format: parquet
           partitions: 
             - name: pickup_datetime
               data_type: datetime
@@ -22,7 +23,8 @@ sources:
                             
         external:
           location: gs://vernal-foundry-375904-ny-taxi-data/yellow/*
-          
+          options:
+            format: parquet
           partitions: 
             - name: pickup_datetime
               data_type: datetime
