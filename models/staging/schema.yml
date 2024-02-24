@@ -1,0 +1,40 @@
+version: 2
+
+sources:
+  - name: external_source
+    database: vernal-foundry-375904
+    schema: ny_taxi_dbt
+    tables:
+      - name: green_trips_external
+        description: >
+            This source table is actually a set of files in external storage.
+                            
+        external:
+          location: gs://vernal-foundry-375904-ny-taxi-data/green/*
+          
+          partitions: 
+            - name: pickup_datetime
+              data_type: datetime
+              granularity: day
+      - name: yellow_trips_external
+        description: >
+            This source table is actually a set of files in external storage.
+                            
+        external:
+          location: gs://vernal-foundry-375904-ny-taxi-data/yellow/*
+          
+          partitions: 
+            - name: pickup_datetime
+              data_type: datetime
+              granularity: day
+    
+  - name: staging
+    database: vernal-foundry-375904
+    schema: ny_taxi_dbt
+
+    tables: 
+      - name: green_trips
+      - name: yellow_trips
+        
+
+        
