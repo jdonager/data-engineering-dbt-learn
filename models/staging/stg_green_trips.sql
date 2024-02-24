@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select * from {{ source('external_source', 'green_trips_external') }}
+    select * from {{ source('staging', 'green_trips_external') }}
 
 ),
 
